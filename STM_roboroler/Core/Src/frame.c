@@ -104,4 +104,3 @@ void motor_set_memory(motor_typedef *motor, uint8_t controller_state, uint8_t st
 
     uart_send(motor, frame, length);
 }
-

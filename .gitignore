@@ -1,0 +1,52 @@
+# STM32CubeIDE - workspace i metadata
+.metadata/
+.recommenders/
+
+# STM32CubeIDE - projekt w folderze STM_roboroler
+STM_roboroler/.settings/
+STM_roboroler/Debug/
+STM_roboroler/Release/
+STM_roboroler/*.launch
+STM_roboroler/.cproject
+STM_roboroler/.project
+
+# Generated build files
+STM_roboroler/*.o
+STM_roboroler/*.list
+STM_roboroler/*.su
+STM_roboroler/*.elf
+STM_roboroler/*.bin
+STM_roboroler/*.hex
+STM_roboroler/*.map
+
+# Build directories
+STM_roboroler/build/
+STM_roboroler/Build/
+
+# Auto-generated startup files
+STM_roboroler/Core/Startup/startup_*.s
+
+# Auto-generated HAL/LL drivers (usuń te linie jeśli modyfikujesz HAL)
+STM_roboroler/Drivers/STM32*xx_HAL_Driver/
+STM_roboroler/Drivers/CMSIS/Device/
+STM_roboroler/Drivers/CMSIS/Include/
+
+# STM32CubeMX backup files
+STM_roboroler/*.ioc.bak
+
+# IDE temporary files
+*.tmp
+*.swp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
