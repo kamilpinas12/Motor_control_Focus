@@ -14,25 +14,27 @@
 
 
 typedef struct {
+	//communication parameters
 	UART_HandleTypeDef *huart;
 	GPIO_TypeDef* tx_en_port;
 	uint16_t tx_en_pin;
+
 	uint8_t address;
 
-}motor_typedef;
+
+}motor_t;
 
 
 
 
 
-void motor_set_state(motor_typedef *motor, uint8_t controller_state, uint8_t state);
+HAL_StatusTypeDef motor_set_state(motor_t* motor, uint8_t controller_state, uint8_t state);
 
-uint8_t motor_get_state(motor_typedef *motor, uint8_t controller_state);
+uint8_t motor_get_state(motor_t* motor, uint8_t controller_state);
 
-void motor_set_memory(motor_typedef *motor, uint8_t controller_state, uint8_t start_cell, int32_t *values, uint8_t num_values);
+HAL_StatusTypeDef motor_set_memory(motor_t* motor, uint8_t controller_state, uint8_t start_cell, int32_t *values, uint8_t num_values);
 
-
-
+uint32_t motor_get_memory(motor_t* motor, uint8_t start_cell, uint8_t controller_state);
 
 
 #endif /* INC_FRAME_H_ */
