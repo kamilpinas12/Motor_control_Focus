@@ -74,7 +74,7 @@ uint8_t motor_get_state(motor_t *motor, uint8_t controller_state) {
 }
 
 
-HAL_StatusTypeDef motor_set_memory(motor_t *motor, uint8_t controller_state, uint8_t start_cell, int32_t* values, uint8_t num_values) {
+HAL_StatusTypeDef motor_set_memory(motor_t* motor, uint8_t controller_state, uint8_t start_cell, int32_t *values, uint8_t num_values){
     if (num_values > 62) return HAL_ERROR;
     if (start_cell > 64) return HAL_ERROR;
 
@@ -104,7 +104,7 @@ HAL_StatusTypeDef motor_set_memory(motor_t *motor, uint8_t controller_state, uin
 
 
 
-uint32_t motor_get_memory(motor_t* motor, uint8_t start_cell, uint8_t controller_state){
+int32_t motor_get_memory(motor_t* motor, uint8_t start_cell, uint8_t controller_state){
 	uint8_t frame[7];
 
 	frame[0] = 7;
@@ -133,6 +133,43 @@ uint32_t motor_get_memory(motor_t* motor, uint8_t start_cell, uint8_t controller
 						((uint32_t)response[3]);
 
 }
+
+
+
+HAL_StatusTypeDef motor_set_point(motor_t* motor, int32_t set_point){
+	return motor_set_memory(motor, 3, 3, &set_point, 1);
+}
+
+
+int32_t motor_get_position(motor_t* motor){
+	return motor_get_memory(motor, 0, 3);
+}
+
+
+
+HAL_StatusTypeDef motor_set_stop_voltage(motor_t* motor, uint32_t voltage){
+	if(voltage > 1000) voltage = 1000;
+	return motor_set_memory(motor, 2, 8, (int32_t*)(&voltage), 1);
+}
+
+
+
+HAL_StatusTypeDef motor_set_move_voltage(motor_t* motor, uint32_t voltage){
+	if(voltage > 1000) voltage = 1000;
+	return motor_set_memory(motor, 2, 7, (int32_t*)(&voltage), 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
